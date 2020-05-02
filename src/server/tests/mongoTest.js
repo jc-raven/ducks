@@ -1,7 +1,6 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
-const Feeding = require('./models/feeding')
-// const User = require('./models/user')
+const Feeding = require('../models/feeding')
 
 const url = process.env.MONGO_URI
 console.log('connecting to ', url)
@@ -10,7 +9,7 @@ mongoose
   .connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-    }
+  }
   )
   .then(result => {
     console.log('connected to mongodb')

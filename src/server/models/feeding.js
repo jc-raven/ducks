@@ -11,13 +11,13 @@ const pointSchema = new mongoose.Schema({
     type: [Number],
     required: true
   }
-});
+})
 
 // a model representing a feeding event
 const feedingSchema = new mongoose.Schema({
   userId: {
     type: String,
-    required: true
+    required: false
   },
   time: {
     type: Date,
@@ -38,6 +38,13 @@ const feedingSchema = new mongoose.Schema({
   foodAmount: { // in kg?
     type: Number,
     required: true
+  }
+})
+feedingSchema.set('toJSON', {
+  transform: (document, retObj) => {
+    retObj.id = retObj._id.toString()
+    // delete returnedObject._id
+    delete retObj.__v
   }
 })
 

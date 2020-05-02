@@ -1,0 +1,22 @@
+{
+  "name": "ducks_application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jc-raven/ducks.git"
+  },
+  "author": "Jordan Craven",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jc-raven/ducks/issues"
+  },
+  "homepage": "https://github.com/jc-raven/ducks#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
+}
