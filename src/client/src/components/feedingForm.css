@@ -1,0 +1,27 @@
+.flexForm {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+}
+
+.flexForm li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.flexForm > li > label,
+.flexForm > li > select {
+  flex: 1 0 120px;
+  max-width: 220px;
+}
+
+.flexForm > li > button {
+  margin: 20px 0 0 150px
+}
+
+input[type=number]{
+    width: 60px;
+}
