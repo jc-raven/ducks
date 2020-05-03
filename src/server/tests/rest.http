@@ -1,0 +1,20 @@
+POST http://localhost:3001/login
+content-type: application/json
+
+{
+  "userName": "user",
+  "password": "user"
+}
+
+GET http://localhost:3001/feedings
+
+POST http://localhost:3001/feedings
+content-type: application/json
+
+{
+  "time": 1588466799564,
+  "location": [-101, 201],
+  "numDucks": 4,
+  "foodType": "Bread",
+  "foodAmount": 2
+}

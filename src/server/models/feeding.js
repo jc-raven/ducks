@@ -1,17 +1,17 @@
 const mongoose = require('mongoose')
 
 // a model representing a location / Mongo GeoJSON
-const pointSchema = new mongoose.Schema({
-  type: {
-    type: String,
-    enum: ['Point'],
-    required: true
-  },
-  coordinates: {
-    type: [Number],
-    required: true
-  }
-})
+// const pointSchema = new mongoose.Schema({
+//   type: {
+//     type: String,
+//     enum: ['Point'],
+//     required: true
+//   },
+//   coordinates: {
+//     type: [Number],
+//     required: true
+//   }
+// })
 
 // a model representing a feeding event
 const feedingSchema = new mongoose.Schema({
@@ -24,7 +24,7 @@ const feedingSchema = new mongoose.Schema({
     required: true
   } ,
   location: {
-    type: pointSchema,
+    type: [Number],
     required: true
   },
   numDucks: {

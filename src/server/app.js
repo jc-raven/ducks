@@ -1,11 +1,12 @@
-
-const config = require('./utils/config')
+const cors = require('cors')
 const express = require('express')
 const mongoose = require('mongoose')
-const feedingsRouter = require('./controllers/feedings')
 const authRouter = require('./controllers/auth')
+const config = require('./utils/config')
+const feedingsRouter = require('./controllers/feedings')
 
 const app = express()
+app.use(cors())
 app.use(express.json())
 
 app.use('/feedings', feedingsRouter)
