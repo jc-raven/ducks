@@ -37,7 +37,10 @@ feedingsRouter.post('/', (request, response) => {
       console.log('saved successfully')
       response.json(savedFeeding.toJSON())
     })
-    .catch(error => console.log('error saving', error))
+    .catch(error => {
+      const msg = `post error: ${error.toString()}`
+      return response.status(400).json({ error: msg })
+    })
 })
 
 module.exports = feedingsRouter

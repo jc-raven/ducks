@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import DateTimePicker from 'react-datetime-picker';
-import LocationSearchInput from './placesAutocomplete'
+// import LocationSearchInput from './placesAutocomplete'
 import './feedingForm.css';
 import '../App.css'
 
 const FoodSelect = ({onChange}) => (
- <select>
+ <select onChange={onChange}>
   <option value='bread'>Bread</option>
   <option value='oats'>Oats</option>
   <option value='lettuce'>Lettuce</option>
@@ -17,41 +17,57 @@ const FoodSelect = ({onChange}) => (
 </select> 
 )
 
-const FeedingForm = ({onSubmit}) => (
-  <form onSubmit={onSubmit}>
-    <ul className='flexForm'>
-      <li>
+const FeedingForm = ({onSubmit}) => { 
+  const [time, setTime] = useState(new Date())
+  const [foodType, setFoodType] = useState('bread')
+  const [location, setLocation] = useState('')
+  const [numDucks, setNumDucks] = useState(0)
+  const [foodAmount, setFoodAmount] = useState(0)
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const obj = {
+      time,
+      location: [-100, 100],
+      numDucks,
+      foodType,
+      foodAmount
+    }
+    console.log('object to submit', obj)
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className='form-group'>
         <label>Time</label>
         <DateTimePicker
-          onChange={()=>{}}
-          value={new Date()}
+          onChange={e => setTime(e)}
+          value={time}
           disableClock={true}
           clearIcon={null}
           calendarIcon={null}
         />
-      </li>
-      <li>
+      </div>
+      <div className='form-group'>
         <label>Food Type</label>
-        <FoodSelect onChange={() => {}} />
-      </li>
-      <li>
+        <FoodSelect onChange={e => setFoodType(e.target.value)} />
+      </div>
+      <div className='form-group'>
         <label>Location</label>
         {/* <LocationSearchInput /> */}
-        <input type='text' />
-      </li>
-      <li>
+        <input type='text' onChange={(e) => setLocation(e.target.location)} />
+      </div>
+      <div className='form-group'>
         <label>How many ducks</label>
-        <input type='number' />
-      </li>
-      <li>
-        <label>How much food</label>
-        <input type='number' />
-      </li>
-      <li>
-        <button type='submit'>Submit</button>
-      </li>
-    </ul>
-  </form>
-)
+        <input type='number' onChange={(e) => setNumDucks(e.target.value)}/>
+      </div>
+      <div className='form-group'>
+        <label>How much food (in kg)</label>
+        <input type='number' onChange={(e) => setFoodAmount(e.target.value)}/>
+      </div>
+          <button type='submit'>Submit</button>
+    </form>
+  )
+ }
 
 export default FeedingForm

@@ -1,27 +1,33 @@
-.flexForm {
+.form-group {
   display: flex;
-  flex-direction: column;
-  list-style-type: none;
-  padding: 0;
+  flex-direction: row;
+  margin-bottom: 10px;
+  /* margin-left: 300px; */
+  /* justify-content: center; */
 }
 
-.flexForm li {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-bottom: 15px;
+.form-group label {
+  flex: none;
+  display: block;
+  width: 195px;
 }
 
-.flexForm > li > label,
-.flexForm > li > select {
-  flex: 1 0 120px;
-  max-width: 220px;
-}
-
-.flexForm > li > button {
-  margin: 20px 0 0 150px
-}
+.form-group label.right-inline {
+   text-align: right;  
+   padding-right: 8px;
+   padding-left: 10px;
+   width: auto;
+ }
+ 
+ .form-group .input-control {
+   flex: 1 1 auto;
+   display: block;
+   margin-bottom: 10px;
+   margin-right: 8px;
+   padding: 4px;
+   margin-top: -4px;
+ }
 
 input[type=number]{
-    width: 60px;
+    width: 10%;
 }
