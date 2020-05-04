@@ -25,7 +25,7 @@ const LoginForm = ({onSubmit}) => {
 
   return (
   <div>
-    <h3 style={{textAlign: 'center'}}>Please login to view duck feeding data</h3>
+    <h3 style={{textAlign: 'center'}}>Please login to view duck data</h3>
     <form className='login' onSubmit={handleSubmit}> 
       <ul>
         <li>

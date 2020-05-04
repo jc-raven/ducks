@@ -1,26 +1,16 @@
 import React, {useState} from 'react'
-import { BrowserRouter as Router,
-  Switch, Route, Link
-} from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
 import '../static/App.css'
 
 import FeedingForm from './form'
+import Header from './header'
 import LoginForm from './login'
 import Results from './results'
 import Thankyou from './thanks'
 
-const Header = ({authState}) => (
-    <div style={{display: 'flex', justifyContent: 'flex-end', margin: '5px'}}>
-      {
-        authState 
-          ? <Link to='/' className='button'>Logout</Link>
-          : <Link to='/login' className='button'>Login</Link>
-      }
-    </div>
-)
 
 const Main = () => (
-  <div className="App">
+  <div className='App'>
     <Header/>
     <h3>How do you feed the ducks?</h3>
     <FeedingForm onSubmit={()=> {}} />
@@ -31,7 +21,6 @@ const App = () => {
   const [authState, setAuthState] = useState(false)
 
   const handleLogin = (state) => {
-    console.log(`login result!`, state)
     setAuthState(state || false)
   }
 
@@ -42,7 +31,7 @@ const App = () => {
           <LoginForm onSubmit={handleLogin} />
         </Route>
         <Route path='/admin'>
-          <Results />
+          {() => authState ? <Results /> : <Redirect to='/login'/>}
         </Route>
         <Route path='/thanks'>
           <Thankyou />

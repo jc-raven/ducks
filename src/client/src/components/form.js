@@ -78,7 +78,8 @@ const FeedingForm = ({onSubmit}) => {
       </div>
         <div className='form-group'>
           <button className='button' type='submit'>Submit</button>
-          </div>
+        </div>
+      <p className='error'>{err}</p>
     </form>
   )
  }
