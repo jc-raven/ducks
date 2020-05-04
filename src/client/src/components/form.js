@@ -1,20 +1,18 @@
 import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import DateTimePicker from 'react-datetime-picker';
-// import LocationSearchInput from './placesAutocomplete'
-import './feedingForm.css';
-import '../App.css'
+import feedingService from '../services/feeding'
+import '../static/App.css'
 
 const FoodSelect = ({onChange}) => (
- <select onChange={onChange}>
-  <option value='bread'>Bread</option>
-  <option value='oats'>Oats</option>
-  <option value='lettuce'>Lettuce</option>
-  <option value='corn'>Corn</option>
-  <option value='rice'>Rice</option>
-  <option value='worms'>Worms</option>
-  <option value='popcorn'>Popcorn</option>
-  <option value='other'>Other</option>
-</select> 
+  <select className='form-select' onChange={onChange}>
+    <option value='bread'>Bread</option>
+    <option value='oats'>Oats</option>
+    <option value='lettuce'>Lettuce</option>
+    <option value='corn'>Corn</option>
+    <option value='worms'>Worms</option>
+    <option value='other'>Other</option>
+  </select>
 )
 
 const FeedingForm = ({onSubmit}) => { 
@@ -23,17 +21,31 @@ const FeedingForm = ({onSubmit}) => {
   const [location, setLocation] = useState('')
   const [numDucks, setNumDucks] = useState(0)
   const [foodAmount, setFoodAmount] = useState(0)
+  const [err, setErr] = useState('')
+  const history = useHistory();
 
   const handleSubmit = (event) => {
     event.preventDefault()
     const obj = {
       time,
-      location: [-100, 100],
+      location,
       numDucks,
       foodType,
       foodAmount
     }
-    console.log('object to submit', obj)
+
+    feedingService.addFeedingEvent(obj)
+      .then((response) => {
+        if (response && response.data) {
+          const data = response.data;
+          console.log('post successful', data);
+          history.push('/thanks')
+        }
+      })
+      .catch(err => {
+        console.log('error', err);
+        setErr(err.message)
+      })
   }
 
   return (
@@ -54,8 +66,7 @@ const FeedingForm = ({onSubmit}) => {
       </div>
       <div className='form-group'>
         <label>Location</label>
-        {/* <LocationSearchInput /> */}
-        <input type='text' onChange={(e) => setLocation(e.target.location)} />
+        <input type='text' onChange={(e) => setLocation(e.target.value)} />
       </div>
       <div className='form-group'>
         <label>How many ducks</label>
@@ -63,9 +74,11 @@ const FeedingForm = ({onSubmit}) => {
       </div>
       <div className='form-group'>
         <label>How much food (in kg)</label>
-        <input type='number' onChange={(e) => setFoodAmount(e.target.value)}/>
+        <input type='number' step='any' onChange={(e) => setFoodAmount(e.target.value)}/>
       </div>
-          <button type='submit'>Submit</button>
+        <div className='form-group'>
+          <button className='button' type='submit'>Submit</button>
+          </div>
     </form>
   )
  }

@@ -24,9 +24,13 @@ const feedingSchema = new mongoose.Schema({
     required: true
   } ,
   location: {
-    type: [Number],
+    type: String,
     required: true
   },
+  // location: {
+  //   type: [Number],
+  //   required: true
+  // },
   numDucks: {
     type: Number,
     required: true

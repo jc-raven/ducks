@@ -1,0 +1,91 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.thanks {
+  text-align: center;
+}
+
+.button {
+  padding: 6px 6px;
+  background: #333;
+  color: #f2f2f2;
+  text-decoration: none;
+}
+
+.login {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+ul {
+  list-style: none;
+}
+
+.login ul li label {
+  margin-right: 20px;
+}
+
+.loginbtn {
+  margin-left: 20px;
+}
+
+.error {
+  font-weight: bold;
+  color: red;
+  text-align: center;
+}
+
+/* form */
+
+form {
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  flex: none;
+  display: block;
+  width: 195px;
+}
+
+.form-group label.right-inline {
+   text-align: right;  
+   padding-right: 8px;
+   padding-left: 10px;
+   width: auto;
+ }
+ 
+ .form-group .input-control {
+   flex: 1 1 auto;
+   display: block;
+   margin-bottom: 10px;
+   margin-right: 8px;
+   padding: 4px;
+   margin-top: -4px;
+ }
+
+input[type=number]{
+    width: 20%;
+}
+
+.form-select {
+  margin-right: 90px;
+}
+
+input[type=select]{
+  margin-right: 200px;
+}

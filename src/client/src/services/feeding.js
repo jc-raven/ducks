@@ -1,10 +1,15 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/feedings'
+import config from '../utils/config'
+
+const baseUrl = `${config.BASEURL}/feedings`
 
 const getFeedingEvents = () => {
   return axios.get(baseUrl)
 }
 
-const addFeedingEvent = (feedingEvent) => axios.post(baseUrl, feedingEvent)
+const addFeedingEvent = (feedingEvent) => {
+  console.log('event submitted!', feedingEvent)
+  return axios.post(baseUrl, feedingEvent)
+}
 
 export default {getFeedingEvents, addFeedingEvent}
