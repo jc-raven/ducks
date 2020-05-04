@@ -1,4 +1,4 @@
-# [Duck Assignment](https://duckclient01.herokuapp.com/)
+# Duck Assignment
 ## Approach
 My initial ideas about this assignment were focused on providing the researcher with valuable data by having the user submission form easy to use. The requirements left it quite open on how this data was supposed to be presented, and I ended up displaying it in a table due to the time constraints. 
 
